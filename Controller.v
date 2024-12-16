@@ -11,13 +11,12 @@
 `define J_type  7'b1101111
 
 
-
 module Contr (
     input [6:0] opcode,
     input [2:0] func3,
     input       func7,
 
-    output reg  next_pc_sel,
+    output reg  PCsrc,
     output reg  [3:0] im_w_en,
     output reg  wb_en,
     output reg  jb_op1_sel,

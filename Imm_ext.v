@@ -16,13 +16,15 @@ module SignEx (
 );
 //imm sel by opcode (0010011/0011011-> I, 0100011-> S, 1100011-> B, 1101111 -> J)
     always @(*) begin
-        `R_type:    exImm <= 32'b0;
+        case (inst[6:0])
+            `R_type:    exImm <= 32'b0;
             `I_type:    exImm <= {{20{inst[31]}}, inst[31:20]};
             `S_type:    exImm <= {{20{inst[31]}}, inst[31:25], inst[11:7]};
             `B_type:    exImm <= {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
             `U_type:    exImm <= {inst[31:12], 12'b0};
             `J_type:    exImm <= {{12{inst[31]}}, inst[19:12], inst[20], inst[30:21], 1'b0};
             default:    exImm <= 32'bx;
+        endcase
     end
     
 endmodule

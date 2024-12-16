@@ -6,7 +6,6 @@ module Mem (
     output reg  [31:0]  readData
 );
     reg [7:0] mem[0:65535];
-    reg count,
     
     always @(posedge clk) begin
         if(memWrite[0]) begin
