@@ -1,7 +1,7 @@
 module moduleName (
-    input [31:0] inst,
-    output [4:0] rs1,
-    output [4:0] rs2,
+    input  [31:0]inst,
+    output [4:0] Rs1,
+    output [4:0] Rs2,
     output [4:0] rd,
     output [6:0] funct7,
     output [4:0] funct3,

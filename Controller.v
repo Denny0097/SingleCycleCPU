@@ -11,22 +11,71 @@
 `define J_type  7'b1101111
 
 
-module Contr (
+module Controller (
+    input       clk,
     input [6:0] opcode,
     input [2:0] func3,
-    input       func7,
+    input [6:0] func7,
 
-    output reg  PCsrc,
-    output reg  [3:0] im_w_en,
-    output reg  wb_en,
-    output reg  jb_op1_sel,
-    output reg  alu_op1_sel,
-    output reg  alu_op2_sel,
-    output reg  wb_sel,
-    output reg  [3:0] ALU,
-    output reg  [3:0] mem_write,
-    output reg  wb_sel
+    output reg  PCSrc,
+    output reg  ResultSrc,
+    output reg  RegDst,
+    output reg  MemWrite,
+    output reg  [2:0] ALUContol,
+    output reg  ALUSrc,
+    output reg  [1:0] ImmSrc,
+    output reg  RegWrite
 );
+
+    always @(posedge clk) begin
+        case (opcode)
+            R_type: begin
+                PCSrc = 0;
+                ResultSrc = 
+            end 
+            I_load: begin
+                PCSrc = 0;
+                
+            end 
+            I_arth: begin
+                PCSrc = 0;
+                
+            end 
+            JALR: begin
+                PCSrc = 0;
+                
+            end 
+            I_type: begin
+                PCSrc = 0;
+                
+            end 
+            LUI: begin
+                PCSrc = 0;
+                
+            end 
+            AUIPC: begin
+                PCSrc = 0;
+                
+            end 
+            U_type: begin
+                PCSrc = 0;
+                
+            end 
+            S_type: begin
+                PCSrc = 0;
+                
+            end 
+            B_type: begin
+                
+            end 
+            J_type: begin
+                
+            end 
+            default: 
+        endcase
+    end
+    
+
 
 //imm sel by opcode (0010011/0011011-> I, 0100011-> S, 1100011-> B, 1101111 -> J)
     
